@@ -15,7 +15,7 @@ Why are we using a hodge-podge of Azure CLI and Terraform? Why not just go full 
 
 ## Provisioning
 ### 1. Log into the Azure CLI and create a Container Registry -- Azure CLI
-Log in to the Azure CLI. This can be done by running `setup.azcli` using bash, zsh, or any shell of your choosing. It can also be run from within VSCode. If you want, you can also copy and paste the commands into the terminal of your choosing.
+Log in to the Azure CLI. This can be done by running `setup.azcli`.
 ### 2. Create a custom Jenkins Docker image -- Docker + ACR
 Note: this is done automatically when you run `setup.azcli`.
 
