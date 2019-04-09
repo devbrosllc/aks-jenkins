@@ -1,13 +1,32 @@
 #!/bin/bash
+# Parameters
+CLUSTER_NAME="jxuksouthcluster"
+LOCATION="UK South"
+NODE_SIZE="Standard_D2s_v3"
+NODES=1
+RESOURCE_GROUP="jxuksouth_rg"
+
+# Environment
+export KUBECONFIG=~/.kube/config
+
 # Log in to Azure
 az login
 az account list
 
 # Install Jenkins X
-if [[ $(brew ls --versions jx )]]; then
+if [[ $(brew ls --versions jx) ]]; then
   echo 'jx is already installed. Go ahead and create your cluster!'
 else
   echo 'Installing jx (Jenkins X) using brew...'
   brew tap jenkins-x/jx
   brew install jx
 fi
+
+# Create jx cluster
+az group create -n "$RESOURCE_GROUP" -l "$LOCATION"
+az aks create --resource-group "$RESOURCE_GROUP" --name "$CLUSTER_NAME" --node-count 1
+
+# Set kubectl context
+az aks get-credentials --resource-group "$RESOURCE_GROUP" --name "$CLUSTER_NAME"
+kubectl config use-context "$CLUSTER_NAME"
+jx install --provider=aks --git-username=rudolphjacksonm --git-private
