@@ -11,4 +11,8 @@ else
   brew install jx
 fi
 
-jx create cluster minikube
+jx create cluster minikube \
+--memory 4096 \
+--cpu 3 \
+--disk-size 50GB \
+--vm-driver virtualbox

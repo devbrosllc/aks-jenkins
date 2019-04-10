@@ -21,13 +21,12 @@ Run the script `setup_minikube.sh` contained in this repo.
 * Runs `jx create cluster` to create a minikube cluster
 
 with the following defaults:
-- 
+ - memory (MB): 4096
+ - cpu (cores): 2
+ - disk-size: 50GB
+ - vm-driver: virtualbox
 
 I would also recommend using these settings when prompted by the installer:
- - memory (MB): 2048
- - cpu (cores): 2
- - disk-size: 25GB
- - driver: hyperkit
 
 ## Cleanup
 ### Azure
