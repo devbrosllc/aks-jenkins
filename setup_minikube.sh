@@ -11,4 +11,4 @@ else
   brew install jx
 fi
 
-jx create cluster
+jx create cluster minikube
